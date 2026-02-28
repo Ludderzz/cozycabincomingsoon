@@ -62,6 +62,7 @@ export default function Footer() {
                   <Instagram size={12} className="text-gold/40 group-hover:text-gold/70 transition-colors" strokeWidth={1.5} />
                   <span className="body-copy text-cream/35 group-hover:text-cream/60 transition-colors" style={{ fontSize: '0.82rem' }}>@cozycabinretreat</span>
                 </a>
+                 <div className="section-label text-cream/30 mb-6" style={{ fontSize: '0.6rem' }}>Made with love - WebcircuitUK</div>
               </div>
 
               <div className="mt-8">
