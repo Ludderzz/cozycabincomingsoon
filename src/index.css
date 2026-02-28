@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FDFCFB;
+  --forest: #1B2B21;
+  --forest-light: #2C4535;
+  --gold: #C9A84C;
+  --slate: #5C6B72;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--slate);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--forest-light);
+  border-radius: 2px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--forest);
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  20% { transform: translate(3%, 2%); }
+  30% { transform: translate(-1%, 4%); }
+  40% { transform: translate(2%, -1%); }
+  50% { transform: translate(-3%, 3%); }
+  60% { transform: translate(1%, -2%); }
+  70% { transform: translate(3%, 1%); }
+  80% { transform: translate(-2%, 2%); }
+  90% { transform: translate(2%, -3%); }
+}
+
+/* Navigation */
+.nav-link {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(253, 252, 251, 0.75);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: rgba(253, 252, 251, 1);
+}
+
+/* Hero text */
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.12em;
+}
+
+/* Section label */
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* Section title */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Body copy */
+.body-copy {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+}
+
+/* CTA Button */
+.btn-primary {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: var(--forest);
+  color: var(--cream);
+  border: 1px solid transparent;
+  padding: 1rem 2.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(226, 201, 126, 0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-primary:hover {
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 40px rgba(27, 43, 33, 0.3);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+/* Outline button */
+.btn-outline {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: transparent;
+  color: rgba(253, 252, 251, 0.8);
+  border: 1px solid rgba(253, 252, 251, 0.35);
+  padding: 0.85rem 2rem;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: rgba(253, 252, 251, 0.08);
+  border-color: rgba(253, 252, 251, 0.7);
+  color: var(--cream);
+}
+
+/* Divider line */
+.divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+/* Calendar styles */
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.calendar-day.available:hover {
+  background: var(--forest);
+  color: var(--cream);
+  border-color: var(--forest);
+}
+
+.calendar-day.booked {
+  color: rgba(92, 107, 114, 0.35);
+  cursor: not-allowed;
+}
+
+.calendar-day.booked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: rgba(92, 107, 114, 0.3);
+  transform: rotate(-15deg);
+}
+
+.calendar-day.selected {
+  background: var(--forest);
+  color: var(--cream);
+  border-color: var(--forest);
+}
+
+.calendar-day.today {
+  border-color: rgba(201, 168, 76, 0.5);
+  color: var(--forest);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Feature item */
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(92, 107, 114, 0.12);
+}
+
+.feature-item:last-child {
+  border-bottom: none;
+}
+
+/* Parallax image container */
+.parallax-image {
+  overflow: hidden;
+  position: relative;
+}
