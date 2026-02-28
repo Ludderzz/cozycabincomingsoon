@@ -71,7 +71,7 @@ export default function Calendar() {
     ? Math.round((new Date(checkOut.year, checkOut.month, checkOut.day) - new Date(checkIn.year, checkIn.month, checkIn.day)) / 86400000)
     : null
 
-  const pricePerNight = 285
+  const pricePerNight = 100
 
   return (
     <section id="availability" className="bg-cream py-28 md:py-40 relative overflow-hidden">
